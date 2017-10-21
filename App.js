@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SectionList } from 'react-native';
+import { StyleSheet, Text, View, SectionList, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation'
 
@@ -7,20 +7,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.overview}>
-          <View style={styles.overviewLabel}>
-            <Text style={styles.budgetLabel}>Budget</Text>
-            <Text style={styles.expenseLabel}>Expense</Text>
-            <Text style={styles.balanceLabel}>Balance</Text>
-          </View>
-          <View style={styles.overviewValue}>
-            <Text style={styles.budget}>15000/-</Text>
-            <Text style={styles.expense}>12500/-</Text>
-            <Text style={styles.balance}>2500/-</Text>
-          </View>
+        <Image source={require('./logo-100.png')} style={styles.logo}/>
+        <View style={styles.content}>
+          <RootNavigation />
         </View>
-        
-        <RootNavigation />
       </View>
     );
   }
@@ -29,7 +19,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-   paddingTop: 22
+   backgroundColor: '#FAFAFA',
+   paddingTop: 15,
+  },
+  logo: {
+    width: 100, 
+    height: 47,
+    alignSelf: 'center',
+    backgroundColor: '#FAFAFA',
+  },
+  content: {
+    paddingTop: 5,
+    flex: 1,
   },
   sectionHeader: {
     paddingTop: 2,

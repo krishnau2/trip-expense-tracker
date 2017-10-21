@@ -18,11 +18,11 @@ export default class SettingsScreen extends React.Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 15,
-        backgroundColor: '#fff',
+        // paddingTop: 15,
+        // backgroundColor: '#fff',
     },
     balanceLabel: {
         color: '#3B7A57',
         fontSize: 12,
-      },
+    },
 });

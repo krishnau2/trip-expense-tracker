@@ -24,9 +24,9 @@ export default TabNavigator(
                 const {routeName} = navigation.state;
                 let iconName;
                 switch (routeName) {
-                    case 'Home' : iconName = `ios-information-circle${focused ? '' : '-outline'}`; break;
-                    case 'Links': iconName = `ios-link${focused ? '' : '-outline'}`; break;
-                    case 'Settings' : iconName = `ios-options${focused ? '' : '-outline'}`; break;
+                    case 'Home' : iconName = `ios-home${focused ? '' : '-outline'}`; break;
+                    case 'Links': iconName = `ios-add-circle${focused ? '' : '-outline'}`; break;
+                    case 'Settings' : iconName = `ios-settings${focused ? '' : '-outline'}`; break;
                 }
                 return(
                     <Ionicons
