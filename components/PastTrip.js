@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         width: 320,
     },
     pastTripCaption: {
-        fontSize: 14,
+        fontSize: 16,
         color: '#808080',
         fontWeight: 'bold',
         paddingLeft: 25,
@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
         borderColor: '#EEEEEE',
     },
     pastTripName: {
-        fontSize: 15,
+        fontSize: 16,
         paddingLeft: 25,
         flex: 2,
     },
     pastTripExpense: {
-        fontSize: 14,
+        fontSize: 16,
         color: '#808080',
         width: 70,        
     },

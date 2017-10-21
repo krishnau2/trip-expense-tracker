@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     expenseTableHeadItem: {
         width: 60,
+        fontSize: 16,
     },
     
     expenseRow: {
@@ -77,17 +78,17 @@ const styles = StyleSheet.create({
         borderColor: '#EEEEEE',
     },
     expenseCategory: {
-        fontSize: 14,
+        fontSize: 16,
         flex: 2,
         marginLeft: 15,
     },
     expenseAmount: {
-        fontSize: 12,
+        fontSize: 14,
         width: 60,
         color: '#E74C3C',        
     },
     expenseBalance: {
-        fontSize: 13,
+        fontSize: 15,
         width: 70,
         fontWeight: 'bold',
         color: '#27AE60',
