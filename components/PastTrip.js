@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 40,
         alignItems: 'center',
-        borderBottomWidth: 1,
+        borderTopWidth: 1,
         borderColor: '#EEEEEE',
     },
     pastTripName: {

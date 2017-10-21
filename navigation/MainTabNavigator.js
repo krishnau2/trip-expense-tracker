@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import {TabNavigator, TabBarBottom} from 'react-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import AddNewScreen from '../screens/AddNewScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 export default TabNavigator(
@@ -11,8 +11,8 @@ export default TabNavigator(
         Home: {
             screen: HomeScreen,
         },
-        Links: {
-            screen: LinksScreen,
+        AddNew: {
+            screen: AddNewScreen,
         },
         Settings: {
             screen: SettingsScreen,
@@ -25,7 +25,7 @@ export default TabNavigator(
                 let iconName;
                 switch (routeName) {
                     case 'Home' : iconName = `ios-home${focused ? '' : '-outline'}`; break;
-                    case 'Links': iconName = `ios-add-circle${focused ? '' : '-outline'}`; break;
+                    case 'AddNew': iconName = `ios-add-circle${focused ? '' : '-outline'}`; break;
                     case 'Settings' : iconName = `ios-settings${focused ? '' : '-outline'}`; break;
                 }
                 return(
