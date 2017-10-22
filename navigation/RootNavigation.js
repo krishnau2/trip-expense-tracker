@@ -1,12 +1,12 @@
 import React from 'react';
 import {StackNavigator} from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
+import TripDetails from '../screens/TripDetails';
 
 const RootStackNavigator = StackNavigator(
     {
-        Main: {
-            screen: MainTabNavigator,
-        },
+        Main: { screen: MainTabNavigator, },
+        TripDetails: { screen: TripDetails}
     },
     {
         navigationOptions: () => ({

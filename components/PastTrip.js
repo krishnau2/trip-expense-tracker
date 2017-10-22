@@ -1,8 +1,12 @@
 import React from 'react';
-import {Text, View, StyleSheet, FlatList} from 'react-native';
+import {Text, View, StyleSheet, FlatList, TouchableHighlight} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default class PastTrip extends React.Component{
+    _showTripDetails(trip) {
+        this.props.navigation.navigate('TripDetails', { trip: trip });
+    }
+
     render(){        
         return (
             <View style={styles.pastTripContainer}>
@@ -11,11 +15,13 @@ export default class PastTrip extends React.Component{
                     <FlatList
                         data={this.props.pastTripData}
                         renderItem={({item}) => 
-                            <View style={styles.pastTripTableRow}>
-                                <Text style={styles.pastTripName}>{item.tripName}</Text>
-                                <Text style={styles.pastTripExpense}>${item.totalExpense}</Text>
-                                <Ionicons style={styles.pastTripAction} name="ios-arrow-forward" size={25} />
-                            </View>
+                            <TouchableHighlight onPress={() => {this._showTripDetails(item)}} >
+                                <View style={styles.pastTripTableRow}>
+                                    <Text style={styles.pastTripName}>{item.tripName}</Text>
+                                    <Text style={styles.pastTripExpense}>${item.totalExpense}</Text>
+                                    <Ionicons style={styles.pastTripAction} name="ios-arrow-forward" size={25} />
+                                </View>
+                            </TouchableHighlight>
                             }
                         />
                 </View>

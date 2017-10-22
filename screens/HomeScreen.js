@@ -34,7 +34,7 @@ export default class HomeScreen extends React.Component{
             <ScrollView>
                 <View style={styles.container}>
                     <CurrentTrip currentTripData={currentTripData}/>
-                    <PastTrip pastTripData={pastTrips}/>
+                    <PastTrip pastTripData={pastTrips} navigation={this.props.navigation}/>
                 </View>
             </ScrollView>
         );
