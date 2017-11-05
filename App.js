@@ -6,8 +6,7 @@ import RootNavigation from './navigation/RootNavigation'
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Image source={require('./logo-100.png')} style={styles.logo}/>
+      <View style={styles.container}>        
         <View style={styles.content}>
           <RootNavigation />
         </View>
@@ -19,15 +18,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
-    paddingTop: 15,
-  },
-  logo: {
-    width: 100, 
-    height: 47,
-    alignSelf: 'center',
-    backgroundColor: '#FAFAFA',
-    flex: -1,
+    backgroundColor: '#FAFAFA',    
   },
   content: {
     flex: 1,
