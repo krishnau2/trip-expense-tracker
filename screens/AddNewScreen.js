@@ -1,118 +1,172 @@
 import React from 'react';
-import {Text, View, StyleSheet, SectionList} from 'react-native';
+import { Text, View, StyleSheet, SectionList, FlatList, TextInput, ScrollView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-export default class LinksScreen extends React.Component{
+export default class LinksScreen extends React.Component {
     static navigationOptions = {
         title: 'New Trip',
         tabBarLabel: 'Add trip'
     };
 
-    render(){
-      let sections =
-        [
-          {title: '25/08/2017 Fri', data: [{key: 1, name: 'Petrol', amount: 2000}, {key: 2, name: 'Breakfast', amount: 350}, {key: 3, name: 'Lunch', amount: 500}, {key: 4, name: 'Tea', amount: 100}]},
-          {title: '26/08/2017 Sat', data: [{key: 5, name: 'Petrol', amount: 2000}, {key: 6, name: 'Breakfast', amount: 350}, {key: 7, name: 'Lunch', amount: 500}, {key: 8, name: 'Tea', amount: 100}]},
-          {title: '27/08/2017 Sun', data: [{key: 10, name: 'Petrol', amount: 2000}, {key: 11, name: 'Breakfast', amount: 350}, {key: 12, name: 'Lunch', amount: 500}, {key: 13, name: 'Tea', amount: 100}]},
-          {title: '28/08/2017 Mon', data: [{key: 15, name: 'Petrol', amount: 2000}, {key: 16, name: 'Breakfast', amount: 350}, {key: 17, name: 'Lunch', amount: 500}, {key: 18, name: 'Tea', amount: 100}]},
-          {title: '29/08/2017 Tue', data: [{key: 20, name: 'Petrol', amount: 2000}, {key: 21, name: 'Breakfast', amount: 350}, {key: 22, name: 'Lunch', amount: 500}, {key: 23, name: 'Tea', amount: 100}]},
-          {title: '30/08/2017 Wed', data: [{key: 25, name: 'Petrol', amount: 2000}, {key: 26, name: 'Breakfast', amount: 350}, {key: 27, name: 'Lunch', amount: 500}, {key: 28, name: 'Tea', amount: 100}]}
-        ]
+    render() {
+        let coTravellers = [
+            { key: 1, name: 'Jaison' },
+            { key: 2, name: 'KK' },
+            { key: 3, name: 'Unni' },
+        ],
+            budget = [
+                { key: 1, name: 'Petrol', amount: 7000 },
+                { key: 2, name: 'Toll', amount: 1000 },
+                { key: 3, name: 'Accomodatio', amount: 8000 },
+            ]
+        return (
+            <ScrollView>
+                <KeyboardAvoidingView behavior="padding" style={styles.container}>
+                    <View style={styles.content}>
+                        <Text style={styles.caption}>Trip Name</Text>
+                        <TextInput
+                            style={styles.inputBox}
+                            placeholder="Kodaikanal trip"
+                            placeholderTextColor="rgba(128, 128, 128, 0.7)"
+                        />
 
-      return(
-        <View style={styles.container}>
-          <View style={styles.overview}>
-              <View style={styles.overviewLabel}>
-                  <Text style={styles.budgetLabel}>Budget</Text>
-                  <Text style={styles.expenseLabel}>Expense</Text>
-                  <Text style={styles.balanceLabel}>Balance</Text>
-              </View>
-              <View style={styles.overviewValue}>
-                  <Text style={styles.budget}>15000/-</Text>
-                  <Text style={styles.expense}>12500/-</Text>
-                  <Text style={styles.balance}>2500/-</Text>
-              </View>
-          </View>
-          <SectionList
-              sections={sections}
-              renderItem={({item}) =>
-                <View style={styles.itemContainer}>
-                  <Text style={styles.item}>{item.name}</Text>
-                  <Text style={styles.item}>{item.amount}</Text>
-                </View>}
-              renderSectionHeader={({section}) =>
-                <Text style={styles.sectionHeader}>{section.title}</Text>}
-          />
-        </View>
-      );
+                        <Text style={styles.caption}>Add Co-Travellers</Text>
+                        <FlatList
+                            data={coTravellers}
+                            renderItem={({ item }) =>
+                                <View style={styles.coTravellerRow}>
+                                    <Text style={styles.coTravellerName}>{item.name}</Text>
+                                </View>
+                            }
+                        />
+                        <View style={styles.addCoTravellerContainer}>
+                            <TextInput
+                                style={[styles.inputBox, styles.travellerInput]}
+                                placeholder="Traveller name"
+                                placeholderTextColor="rgba(128, 128, 128, 0.7)"
+                            />
+                            <Ionicons style={styles.addNewTraveller} name="ios-add-circle" size={25} />
+                        </View>
+
+                        <Text style={styles.caption}>Add Budget</Text>
+                        <FlatList
+                            data={budget}
+                            renderItem={({ item }) =>
+                                <View style={styles.budgetRow}>
+                                    <Text style={styles.budgetName}>{item.name}</Text>
+                                    <Text style={styles.budgetAmount}>${item.amount}</Text>
+                                </View>
+                            }
+                        />
+                        <View style={styles.addBudgetInputContainer}>
+                            <TextInput
+                                style={[styles.inputBox, styles.budgetCategoryInput]}
+                                placeholder="Food, hotel, etc"
+                                placeholderTextColor="rgba(128, 128, 128, 0.7)"
+                            />
+                            <TextInput
+                                style={[styles.inputBox, styles.budgetAmountInput]}
+                                placeholder="amount"
+                                placeholderTextColor="rgba(128, 128, 128, 0.7)"
+                            />
+                            <Ionicons style={styles.addNewTraveller} name="ios-add-circle" size={25} />
+                        </View>
+                    </View>
+                    <TouchableOpacity style={styles.buttonContainer}>
+                        <Text style={styles.buttonText}>Create</Text>
+                    </TouchableOpacity>
+                </KeyboardAvoidingView>
+            </ScrollView>
+        );
     }
 }
 
 const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
-  },
-  item: {
-      padding: 10,
-      fontSize: 12,
-      height: 30,
-  },
-  overview: {
-      backgroundColor: '#D2D7D3',
-      paddingTop: 3,
-      paddingBottom: 3
-  },
-  overviewLabel: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      backgroundColor: '#D2D7D3',
-  },
-  overviewValue: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      backgroundColor: '#D2D7D3',
-  },
-  budgetLabel: {
-      color: '#4183D7',
-      fontSize: 12,
-  },
-  expenseLabel: {
-      color: '#EC644B',
-      fontSize: 12,
-  },
-  balanceLabel: {
-      color: '#3B7A57',
-      fontSize: 12,
-  },
-
-  budget: {
-      color: '#4183D7',
-      fontWeight: 'bold',
-      fontSize: 14,
-  },
-  expense: {
-      color: '#EC644B',
-      fontWeight: 'bold',
-      fontSize: 14,
-  },
-  balance: {
-      color: '#3B7A57',
-      fontWeight: 'bold',
-      fontSize: 14,
-  },
-
-  itemContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginLeft: 5,
-      marginRight: 5
-  }
+    container: {
+        flex: 1,
+        backgroundColor: '#FAFAFA',
+        paddingBottom: 20,
+    },
+    content: {
+        paddingLeft: 25,
+        paddingRight: 25,
+    },
+    caption: {
+        fontSize: 16,
+        color: '#808080',
+        fontWeight: 'bold',
+        paddingTop: 20
+    },
+    inputBox: {
+        borderWidth: 1,
+        borderRadius: 4,
+        borderColor: '#d6d7da',
+        fontSize: 14,
+        paddingTop: 4,
+        paddingBottom: 4,
+        paddingLeft: 5,
+        paddingRight: 2,
+        marginTop: 10,
+    },
+    coTravellerRow: {
+        flexDirection: 'row',
+        height: 40,
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: '#EEEEEE',
+    },
+    coTravellerName: {
+        fontSize: 16,
+    },
+    addCoTravellerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    addNewTraveller: {
+        color: '#27AE60',
+        marginTop: 10,
+    },
+    travellerInput: {
+        flex: 2,
+        marginRight: 10,
+    },
+    budgetRow: {
+        flexDirection: 'row',
+        height: 40,
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: '#EEEEEE',
+    },
+    budgetName: {
+        fontSize: 16,
+        flex: 2,
+    },
+    budgetAmount: {
+        fontSize: 16,
+    },
+    addBudgetInputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    budgetCategoryInput: {
+        flex: 2,
+        marginRight: 10,
+    },
+    budgetAmountInput: {
+        marginRight: 10,
+    },
+    buttonContainer: {
+        backgroundColor: '#27AE60',
+        paddingVertical: 15,
+        marginTop: 20,
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: '#FFF',
+        fontWeight: '700'
+    }
 });
