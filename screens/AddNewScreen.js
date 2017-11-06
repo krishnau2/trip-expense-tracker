@@ -94,6 +94,7 @@ export default class LinksScreen extends React.Component {
                                 style={[styles.inputBox, styles.budgetAmountInput, this.state.expenseAmountStyle]}
                                 placeholder="amount"
                                 placeholderTextColor="rgba(128, 128, 128, 0.7)"
+                                keyboardType="numeric"
                             />
                             <Ionicons style={styles.addNewTraveller} name="ios-add-circle" size={25} />
                         </View>
