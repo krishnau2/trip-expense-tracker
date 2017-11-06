@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, SectionList, FlatList, TextInput, ScrollView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Swipeout from 'react-native-swipeout';
 
 export default class LinksScreen extends React.Component {
     static navigationOptions = {
@@ -36,6 +37,13 @@ export default class LinksScreen extends React.Component {
     }
 
     render() {
+        var swipeoutBtns = [
+            {
+              text: 'Remove',
+              backgroundColor: 'red',
+            }
+        ]
+
         return (
             <ScrollView>
                 <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -53,9 +61,13 @@ export default class LinksScreen extends React.Component {
                         <FlatList
                             data={this.state.coTravellers}
                             renderItem={({ item }) =>
-                                <View style={styles.coTravellerRow}>
-                                    <Text style={styles.coTravellerName}>{item.name}</Text>
-                                </View>
+                                <Swipeout right={swipeoutBtns}
+                                    autoClose = {true}
+                                    backgroundColor= 'transparent'>
+                                    <View style={styles.coTravellerRow}>
+                                        <Text style={styles.coTravellerName}>{item.name}</Text>
+                                    </View>
+                                </Swipeout>
                             }
                         />
                         <View style={styles.addCoTravellerContainer}>
@@ -73,10 +85,14 @@ export default class LinksScreen extends React.Component {
                         <FlatList
                             data={this.state.budget}
                             renderItem={({ item }) =>
-                                <View style={styles.budgetRow}>
-                                    <Text style={styles.budgetName}>{item.name}</Text>
-                                    <Text style={styles.budgetAmount}>${item.amount}</Text>
-                                </View>
+                                <Swipeout right={swipeoutBtns}
+                                    autoClose = {true}
+                                    backgroundColor= 'transparent'>
+                                    <View style={styles.budgetRow}>
+                                        <Text style={styles.budgetName}>{item.name}</Text>
+                                        <Text style={styles.budgetAmount}>${item.amount}</Text>
+                                    </View>
+                                </Swipeout>
                             }
                         />
                         <View style={styles.addBudgetInputContainer}>
