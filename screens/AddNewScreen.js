@@ -14,7 +14,17 @@ export default class LinksScreen extends React.Component {
             tripNameStyle: styles.textinput_unfocused,
             coTravellerStyle: styles.textinput_unfocused,
             expenseNameStyle: styles.textinput_unfocused,
-            expenseAmountStyle: styles.textinput_unfocused
+            expenseAmountStyle: styles.textinput_unfocused,
+            coTravellers: [
+                { key: 1, name: 'Jaison' },
+                { key: 2, name: 'KK' },
+                { key: 3, name: 'Unni' },
+            ],
+            budget: [
+                { key: 1, name: 'Petrol', amount: 7000 },
+                { key: 2, name: 'Toll', amount: 1000 },
+                { key: 3, name: 'Accomodatio', amount: 8000 },
+            ]
         };
     }
 
@@ -26,17 +36,6 @@ export default class LinksScreen extends React.Component {
     }
 
     render() {
-        let coTravellers = [
-            { key: 1, name: 'Jaison' },
-            { key: 2, name: 'KK' },
-            { key: 3, name: 'Unni' },
-        ],
-        budget = [
-            { key: 1, name: 'Petrol', amount: 7000 },
-            { key: 2, name: 'Toll', amount: 1000 },
-            { key: 3, name: 'Accomodatio', amount: 8000 },
-        ];
-
         return (
             <ScrollView>
                 <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -52,7 +51,7 @@ export default class LinksScreen extends React.Component {
 
                         <Text style={styles.caption}>Add Co-Travellers</Text>
                         <FlatList
-                            data={coTravellers}
+                            data={this.state.coTravellers}
                             renderItem={({ item }) =>
                                 <View style={styles.coTravellerRow}>
                                     <Text style={styles.coTravellerName}>{item.name}</Text>
@@ -72,7 +71,7 @@ export default class LinksScreen extends React.Component {
 
                         <Text style={styles.caption}>Add Budget</Text>
                         <FlatList
-                            data={budget}
+                            data={this.state.budget}
                             renderItem={({ item }) =>
                                 <View style={styles.budgetRow}>
                                     <Text style={styles.budgetName}>{item.name}</Text>
