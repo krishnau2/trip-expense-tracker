@@ -8,24 +8,44 @@ export default class LinksScreen extends React.Component {
         tabBarLabel: 'Add trip'
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            tripNameStyle: styles.textinput_unfocused,
+            coTravellerStyle: styles.textinput_unfocused,
+            expenseNameStyle: styles.textinput_unfocused,
+            expenseAmountStyle: styles.textinput_unfocused
+        };
+    }
+
+    onFocus(inputComponent) {
+        this.setState({ [inputComponent + 'Style']: styles.textinput_focused });
+    }
+    onBlur(inputComponent) {
+        this.setState({ [inputComponent + 'Style']: styles.textinput_unfocused });
+    }
+
     render() {
         let coTravellers = [
             { key: 1, name: 'Jaison' },
             { key: 2, name: 'KK' },
             { key: 3, name: 'Unni' },
         ],
-            budget = [
-                { key: 1, name: 'Petrol', amount: 7000 },
-                { key: 2, name: 'Toll', amount: 1000 },
-                { key: 3, name: 'Accomodatio', amount: 8000 },
-            ]
+        budget = [
+            { key: 1, name: 'Petrol', amount: 7000 },
+            { key: 2, name: 'Toll', amount: 1000 },
+            { key: 3, name: 'Accomodatio', amount: 8000 },
+        ];
+
         return (
             <ScrollView>
                 <KeyboardAvoidingView behavior="padding" style={styles.container}>
                     <View style={styles.content}>
                         <Text style={styles.caption}>Trip Name</Text>
                         <TextInput
-                            style={styles.inputBox}
+                            onBlur={() => this.onBlur('tripName')}
+                            onFocus={() => this.onFocus('tripName')}
+                            style={[styles.inputBox, this.state.tripNameStyle]}
                             placeholder="Kodaikanal trip"
                             placeholderTextColor="rgba(128, 128, 128, 0.7)"
                         />
@@ -41,7 +61,9 @@ export default class LinksScreen extends React.Component {
                         />
                         <View style={styles.addCoTravellerContainer}>
                             <TextInput
-                                style={[styles.inputBox, styles.travellerInput]}
+                                onBlur={() => this.onBlur('coTraveller')}
+                                onFocus={() => this.onFocus('coTraveller')}
+                                style={[styles.inputBox, styles.travellerInput, this.state.coTravellerStyle]}
                                 placeholder="Traveller name"
                                 placeholderTextColor="rgba(128, 128, 128, 0.7)"
                             />
@@ -60,12 +82,16 @@ export default class LinksScreen extends React.Component {
                         />
                         <View style={styles.addBudgetInputContainer}>
                             <TextInput
-                                style={[styles.inputBox, styles.budgetCategoryInput]}
+                                onBlur={() => this.onBlur('expenseName')}
+                                onFocus={() => this.onFocus('expenseName')}
+                                style={[styles.inputBox, styles.budgetCategoryInput, this.state.expenseNameStyle]}
                                 placeholder="Food, hotel, etc"
                                 placeholderTextColor="rgba(128, 128, 128, 0.7)"
                             />
                             <TextInput
-                                style={[styles.inputBox, styles.budgetAmountInput]}
+                                onBlur={() => this.onBlur('expenseAmount')}
+                                onFocus={() => this.onFocus('expenseAmount')}
+                                style={[styles.inputBox, styles.budgetAmountInput, this.state.expenseAmountStyle]}
                                 placeholder="amount"
                                 placeholderTextColor="rgba(128, 128, 128, 0.7)"
                             />
@@ -100,13 +126,19 @@ const styles = StyleSheet.create({
     inputBox: {
         borderWidth: 1,
         borderRadius: 4,
-        borderColor: '#d6d7da',
+        // borderColor: '#d6d7da',
         fontSize: 14,
         paddingTop: 4,
         paddingBottom: 4,
         paddingLeft: 5,
         paddingRight: 2,
         marginTop: 10,
+    },
+    textinput_focused: {
+        borderColor: '#27AE60',
+    },
+    textinput_unfocused: {
+        borderColor: '#d6d7da',
     },
     coTravellerRow: {
         flexDirection: 'row',
