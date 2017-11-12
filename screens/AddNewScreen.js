@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, SectionList, FlatList, TextInput, ScrollView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet,
+    SectionList, FlatList, TextInput, ScrollView,
+    KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Swipeout from 'react-native-swipeout';
 
@@ -27,6 +29,11 @@ export default class LinksScreen extends React.Component {
                 { key: 3, name: 'Accomodatio', amount: 8000 },
             ]
         };
+    }
+
+    createTrip(){
+
+        this.props.navigation.goBack(null);
     }
 
     onFocus(inputComponent) {
@@ -114,7 +121,7 @@ export default class LinksScreen extends React.Component {
                             <Ionicons style={styles.addNewTraveller} name="ios-add-circle" size={25} />
                         </View>
                     </View>
-                    <TouchableOpacity style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={this.createTrip.bind(this)}>
                         <Text style={styles.buttonText}>Create</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>

@@ -2,11 +2,17 @@ import React from 'react';
 import {StackNavigator} from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import TripDetails from '../screens/TripDetails';
+import AddNewScreen from '../screens/AddNewScreen';
 
 const RootStackNavigator = StackNavigator(
     {
         Main: { screen: MainTabNavigator, },
-        TripDetails: { screen: TripDetails}
+        TripDetails: { screen: TripDetails},
+        AddNewScreen: {screen: AddNewScreen}
+    },
+    {
+        mode: 'modal',
+        // headerMode: 'none',
     },
     {
         navigationOptions: () => ({

@@ -13,6 +13,11 @@ export default TabNavigator(
         },
         AddNew: {
             screen: AddNewScreen,
+            navigationOptions: ({ navigation }) => ({
+                tabBarOnPress: (tab, jumpToIndex) => {
+                  navigation.navigate('AddNewScreen');
+                },
+            }),
         },
         Settings: {
             screen: SettingsScreen,
